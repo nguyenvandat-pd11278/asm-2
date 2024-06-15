@@ -8,8 +8,8 @@ TagManager:
   - Trap
   - Map
   - Bullet
-  - Anemy
-  - Enermy
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Enermy
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 1345122943
+    locked: 0
+  - name: Player
+    uniqueID: 1274731355
     locked: 0

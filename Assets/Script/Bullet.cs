@@ -1,44 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int scoreValue = 10;
-    private Vector3 mousePos;
-    private Camera mainCam;
-    private Rigidbody2D rb;
-    public float force = 10f;
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        rb = GetComponent<Rigidbody2D>();
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = mousePos - transform.position;
-        Vector3 rotation = transform.position - mousePos;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
-        float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
-
-    }
-    void Update()
-    {
-
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Map")
+        if (collision.CompareTag("Map"))
+        {
+            Debug.Log("CUT");
+            Destroy(gameObject);
+        }
+        else if (collision.CompareTag("Trap"))
         {
             Debug.Log("Cut");
             Destroy(gameObject);
         }
-        else if (other.gameObject.tag == "Enemy")
+        else if (collision.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
-            Debug.Log("Enemy destroyed ");
+            Debug.Log("CHET ME MAY DI");
+            EnermyMovement enemy = collision.GetComponent<EnermyMovement>();
+            if(enemy != null)
+            {
+                enemy.TakeDamage();
+            }
             Destroy(gameObject);
         }
     }
-
 }
-
+   
+     

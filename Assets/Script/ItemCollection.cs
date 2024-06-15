@@ -7,7 +7,6 @@ public class ItemCollection : MonoBehaviour
 {
     private int cherries = 0;
     [SerializeField] private Text cherriesText;
-    [SerializeField] private Text bananaText;
     [SerializeField] private AudioSource collectionSoundEffect;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,7 +15,7 @@ public class ItemCollection : MonoBehaviour
             collectionSoundEffect.Play();
             Destroy(collision.gameObject);
             cherries++;
-            cherriesText.text = "Cherries : " + cherries;
+            cherriesText.text = "X" + cherries;
         }
     }
 }

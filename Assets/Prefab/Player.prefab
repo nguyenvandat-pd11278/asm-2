@@ -18,9 +18,7 @@ GameObject:
   - component: {fileID: 9178940693880494652}
   - component: {fileID: 3391321311867199107}
   - component: {fileID: 1129631658439129073}
-  - component: {fileID: 185907659490119908}
-  - component: {fileID: 952356662305453556}
-  - component: {fileID: -8837830587669123732}
+  - component: {fileID: 2175326450375017147}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -81,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1274731355
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -185,6 +183,8 @@ MonoBehaviour:
   MoveSpeed: 7
   JumpForce: 14
   SpawPlace: {fileID: 0}
+  bulletPrefab: {fileID: 3535636328452091130, guid: deedd421b83511c429bffbbc19e87e8a, type: 3}
+  bulletSpeed: 10
   JumpSoundEffect: {fileID: 9178940693880494652}
 --- !u!95 &6022070053416256484
 Animator:
@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cherriesText: {fileID: 0}
-  bananaText: {fileID: 0}
   collectionSoundEffect: {fileID: 3391321311867199107}
 --- !u!82 &9178940693880494652
 AudioSource:
@@ -510,7 +509,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &185907659490119908
+--- !u!114 &2175326450375017147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -519,35 +518,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 4577026901323398730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92815f94bc373b14ba9c654704e2b404, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bdaa753d24db894194187fb7a70bb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefrab: {fileID: 8475407039534750387, guid: 9a55bbaacab731b479cfb81e90468d6a, type: 3}
-  fireRate: 1
---- !u!114 &952356662305453556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577026901323398730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d5a5f5e16d2864db9ad4d723f2b956, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  gameOverCanvas: {fileID: 0}
---- !u!114 &-8837830587669123732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577026901323398730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22f6d673670f66c42904ea4863b29dfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathSoundEffect: {fileID: 0}

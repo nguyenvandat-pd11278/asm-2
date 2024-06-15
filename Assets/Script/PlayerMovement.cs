@@ -13,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed = 7f;
     public float JumpForce = 14f;
     public Transform SpawPlace;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 5f;
+    private Vector2 shootDirection;
     private enum MovementState { idel, running, jumping, falling }
     [SerializeField] private AudioSource JumpSoundEffect;
     private void Start()
@@ -25,7 +28,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            shootDirection = Vector2.right;
+        }else if(Input.GetKeyDown(KeyCode.A))
+        {
+            shootDirection = Vector2.left;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+
+        dirX = Input.GetAxisRaw("Horizontal"); 
         rb.velocity = new Vector2(dirX * MoveSpeed, rb.velocity.y);
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -66,12 +82,13 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, JumpableGround);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Shoot()
     {
-        if (collision.gameObject.CompareTag("Enermy"))
+        GameObject newBullet = Instantiate(bulletPrefab, transform.position,Quaternion.identity);
+        Rigidbody2D bulletRb = newBullet.GetComponent<Rigidbody2D>();
+        if(bulletRb != null)
         {
-            transform.position = SpawPlace.transform.position;  
-            rb.velocity = Vector3.zero;
+            bulletRb.velocity = shootDirection * bulletSpeed;
         }
     }
 }
